@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090b12">
+  <meta name="description" content="Portofolio digital M. Sukron Al-Habsy — web development, coding, game development, dan eksplorasi teknologi.">
+  <title>M. Sukron Al-Habsy — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#090b12;--panel:#111522;--panel2:#151b2b;--text:#f4f6ff;--muted:#9ba5bd;--line:rgba(255,255,255,.09);--accent:#8b7cff;--cyan:#64d9e8;--green:#8ce2b0}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 75% 0%,rgba(92,78,210,.16),transparent 35%),var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif;line-height:1.6}
+    a{color:inherit;text-decoration:none}button{font:inherit}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+    .brand{font-weight:800;letter-spacing:-.04em}.brand span{color:var(--accent)}.navlinks{display:flex;gap:27px;color:var(--muted);font-size:13px}.navlinks a:hover{color:white}
+    .pill{border:1px solid var(--line);padding:9px 14px;border-radius:99px;color:#dfe3f2;font-size:12px}
+    .hero{min-height:650px;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:50px;padding:85px 0 95px}
+    .eyebrow{font:12px 'DM Mono',monospace;color:var(--cyan);letter-spacing:.13em;text-transform:uppercase;display:flex;align-items:center;gap:10px}
+    .dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 16px var(--green)}
+    h1{font-size:clamp(42px,6.5vw,76px);line-height:1.04;letter-spacing:-.065em;margin:22px 0}
+    .gradient{background:linear-gradient(100deg,#fff 10%,#a99fff 55%,#69dbe7);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{max-width:590px;color:var(--muted);font-size:16px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.btn{border:1px solid var(--line);border-radius:12px;padding:13px 18px;font-size:13px;font-weight:700;cursor:pointer;background:var(--panel);color:white;transition:.2s}.btn.primary{background:linear-gradient(110deg,#7869ef,#5b8de8);border:0;box-shadow:0 10px 35px #7061ed35}.btn:hover{transform:translateY(-2px)}
+    .hero-card{position:relative;border:1px solid var(--line);border-radius:26px;background:linear-gradient(145deg,#171c2d,#0d111c);padding:25px;min-height:340px;overflow:hidden;box-shadow:0 30px 90px #0007}
+    .hero-card:before{content:"";position:absolute;width:240px;height:240px;border-radius:50%;background:#7668ff30;filter:blur(55px);right:-70px;top:-80px}
+    .card-top{display:flex;justify-content:space-between;color:var(--muted);font:11px 'DM Mono',monospace;position:relative}
+    .orb{width:125px;height:125px;border-radius:34px;margin:42px auto 25px;transform:rotate(-12deg);background:linear-gradient(135deg,#8e80ff,#5bd8e5);display:grid;place-items:center;box-shadow:0 0 70px #8477ff50}
+    .orb span{font-size:50px;font-weight:800;color:#101426;transform:rotate(12deg)}
+    .card-caption{text-align:center;position:relative}.card-caption strong{display:block;font-size:19px}.card-caption small{color:var(--muted)}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:26px}.stat{border-top:1px solid var(--line);padding-top:14px}.stat b{display:block;font-size:20px}.stat small{font-size:11px;color:var(--muted)}
+    section{padding:85px 0;border-top:1px solid var(--line)}.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:35px}
+    .kicker{font:11px 'DM Mono',monospace;color:var(--cyan);letter-spacing:.12em;text-transform:uppercase}.section-head h2{font-size:clamp(29px,4vw,43px);letter-spacing:-.05em;margin:8px 0 0}.section-head p{max-width:390px;color:var(--muted);font-size:13px}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:25px}.panel h3{margin:0 0 12px;font-size:17px}.panel p{color:var(--muted);font-size:14px;margin:0}
+    .tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}.tag{font:11px 'DM Mono',monospace;border:1px solid var(--line);background:#ffffff06;padding:8px 11px;border-radius:8px;color:#d9def0}
+    .skills{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.skill{padding:22px;border:1px solid var(--line);border-radius:17px;background:linear-gradient(145deg,#151a29,#0e121d)}.skill .num{font:11px 'DM Mono',monospace;color:var(--accent)}.skill h3{margin:15px 0 7px;font-size:16px}.skill p{font-size:12px;color:var(--muted);margin:0}
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.project{border:1px solid var(--line);border-radius:19px;padding:23px;background:var(--panel);transition:.25s}.project:hover{transform:translateY(-4px);border-color:#8b7cff66}.project-top{display:flex;justify-content:space-between;color:var(--muted);font:11px 'DM Mono',monospace}.project h3{margin:24px 0 8px;font-size:19px}.project p{margin:0;color:var(--muted);font-size:13px}.project .tags{margin-top:18px}
+    .timeline{display:grid;gap:0}.time-row{display:grid;grid-template-columns:170px 1fr;gap:25px;padding:22px 0;border-top:1px solid var(--line)}.time-row time{font:11px 'DM Mono',monospace;color:var(--cyan);padding-top:4px}.time-row h3{font-size:16px;margin:0 0 6px}.time-row p{margin:0;color:var(--muted);font-size:13px}
+    .cta{display:flex;align-items:center;justify-content:space-between;gap:25px;padding:32px;border:1px solid #8b7cff55;background:linear-gradient(110deg,#201d42,#121a29);border-radius:22px}.cta h2{font-size:25px;letter-spacing:-.04em;margin:0 0 5px}.cta p{color:var(--muted);margin:0;font-size:13px}
+    footer{padding:30px 0;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:15px}
+    .chat-launch{position:fixed;right:22px;bottom:22px;z-index:20;border:0;border-radius:50px;padding:14px 19px;color:white;font-weight:800;background:linear-gradient(120deg,#7869ef,#4b9dd9);box-shadow:0 10px 35px #0008;cursor:pointer}
+    .chat{position:fixed;z-index:30;right:22px;bottom:84px;width:min(380px,calc(100vw - 28px));height:510px;max-height:calc(100vh - 120px);border:1px solid #ffffff20;border-radius:20px;background:#101522;box-shadow:0 25px 90px #000b;display:none;overflow:hidden;flex-direction:column}.chat.open{display:flex}
+    .chat-head{padding:16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.chat-head strong{font-size:13px}.chat-head small{display:block;color:var(--muted);font-size:10px}.chat-head button{border:0;background:none;color:white;font-size:21px;cursor:pointer}
+    .messages{padding:16px;overflow:auto;flex:1;display:flex;flex-direction:column;gap:12px}.msg{max-width:88%;padding:11px 13px;border-radius:13px;font-size:12px;white-space:pre-wrap}.msg.bot{background:#1b2335;color:#e6eaff;align-self:flex-start}.msg.user{background:#665bd1;color:white;align-self:flex-end}.chat-form{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line)}.chat-form input{min-width:0;flex:1;background:#080c15;border:1px solid var(--line);border-radius:10px;padding:12px;color:white;outline:none;font:12px Manrope}.chat-form button{border:0;border-radius:10px;padding:0 15px;background:#796df0;color:white;font-weight:800;cursor:pointer}.chat-note{text-align:center;font-size:9px;color:#8992a8;padding:0 10px 9px}
+    .reveal{opacity:0;transform:translateY(18px);transition:.7s}.reveal.show{opacity:1;transform:none}
+    @media(max-width:780px){.navlinks{display:none}.hero{grid-template-columns:1fr;padding:65px 0;gap:35px;min-height:auto}.hero-card{min-height:300px}.about-grid,.skills,.projects{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:12px}.time-row{grid-template-columns:1fr;gap:5px}.cta{display:block}.cta .btn{margin-top:20px}footer{display:block}footer span{display:block;margin-top:8px}}
+  </style>
+</head>
+<body>
+  <header class="wrap nav">
+    <a class="brand" href="#">MSA<span>.</span></a>
+    <nav class="navlinks"><a href="#about">Tentang</a><a href="#skills">Keahlian</a><a href="#projects">Proyek</a><a href="#experience">Pengalaman</a></nav>
+    <a class="pill" href="#contact">Hubungi Saya ↗</a>
+  </header>
+
+  <main>
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow"><i class="dot"></i> DIGITAL CREATOR / TECH ENTHUSIAST</div>
+        <h1>Halo, saya<br><span class="gradient">M. Sukron</span><br>Al-Habsy.</h1>
+        <p>Saya tertarik pada dunia teknologi, coding, pengembangan website, dan pembuatan game. Saya terus belajar, bereksperimen, dan membangun ide menjadi proyek digital.</p>
+        <div class="actions"><a class="btn primary" href="#projects">Jelajahi Proyek ↗</a><a class="btn" href="#about">Kenali Saya</a></div>
+      </div>
+      <div class="hero-card">
+        <div class="card-top"><span>PERSONAL PROFILE / 001</span><span>INDONESIA</span></div>
+        <div class="orb"><span>MSA</span></div>
+        <div class="card-caption"><strong>M. Sukron Al-Habsy</strong><small>Learning · Building · Exploring</small></div>
+        <div class="stats"><div class="stat"><b>01</b><small>Curious Mind</small></div><div class="stat"><b>∞</b><small>Ideas to Build</small></div><div class="stat"><b>24/7</b><small>Keep Learning</small></div></div>
+      </div>
+    </div>
+
+    <section id="about"><div class="wrap reveal">
+      <div class="section-head"><div><div class="kicker">01 / ABOUT ME</div><h2>Tentang Saya</h2></div><p>Mengenal minat, cara berpikir, dan hal-hal yang sedang saya kembangkan.</p></div>
+      <div class="about-grid">
+        <article class="panel"><h3>Siapa Saya?</h3><p>Nama saya M. Sukron Al-Habsy. Saya memiliki ketertarikan besar pada teknologi dan dunia digital. Saya senang mempelajari cara kerja website, aplikasi, game, serta berbagai kemungkinan yang bisa dibuat dengan coding.</p></article>
+        <article class="panel"><h3>Fokus Saat Ini</h3><p>Saya sedang membangun fondasi web development dari dasar, sambil mengeksplorasi JavaScript, desain antarmuka, dan logika pemrograman untuk proyek-proyek interaktif.</p><div class="tags"><span class="tag">Web Development</span><span class="tag">Creative Coding</span><span class="tag">Game Ideas</span></div></article>
+      </div>
+    </div></section>
+
+    <section id="skills"><div class="wrap reveal">
+      <div class="section-head"><div><div class="kicker">02 / WHAT I EXPLORE</div><h2>Keahlian & Minat</h2></div><p>Bidang yang sedang saya pelajari dan kembangkan melalui eksperimen serta proyek pribadi.</p></div>
+      <div class="skills">
+        <article class="skill"><div class="num">01 — WEB</div><h3>Web Development</h3><p>Mempelajari struktur, tampilan, dan interaksi website menggunakan HTML, CSS, dan JavaScript.</p></article>
+        <article class="skill"><div class="num">02 — CODE</div><h3>Programming</h3><p>Mengembangkan logika pemrograman, memahami kode, dan memecahkan masalah secara bertahap.</p></article>
+        <article class="skill"><div class="num">03 — GAME</div><h3>Game Development</h3><p>Merancang konsep gameplay, sistem permainan, UI, dan prototipe game interaktif.</p></article>
+        <article class="skill"><div class="num">04 — AI</div><h3>AI & Technology</h3><p>Mengeksplorasi pemanfaatan AI untuk ide kreatif, fitur aplikasi, dan pengalaman digital.</p></article>
+        <article class="skill"><div class="num">05 — DESIGN</div><h3>UI / UX Design</h3><p>Mempelajari tata letak, navigasi, konsistensi visual, dan pengalaman pengguna.</p></article>
+        <article class="skill"><div class="num">06 — BUILD</div><h3>Creative Projects</h3><p>Mengubah ide menjadi rancangan aplikasi, website, dan pengalaman digital yang bisa dicoba.</p></article>
+      </div>
+    </div></section>
+
+    <section id="projects"><div class="wrap reveal">
+      <div class="section-head"><div><div class="kicker">03 / SELECTED WORK</div><h2>Proyek & Eksplorasi</h2></div><p>Beberapa konsep dan eksperimen digital yang pernah saya rancang atau kembangkan.</p></div>
+      <div class="projects">
+        <article class="project"><div class="project-top"><span>GAME CONCEPT</span><span>01</span></div><h3>SCHOOL LIFE ONLINE</h3><p>Konsep simulasi sekolah online dengan kelas virtual, sistem guru dan murid, jadwal pelajaran, tugas, serta fitur interaksi kelas.</p><div class="tags"><span class="tag">Game Systems</span><span class="tag">UI Concept</span><span class="tag">3D Concept</span></div></article>
+        <article class="project"><div class="project-top"><span>WEB GAME</span><span>02</span></div><h3>DESERT SURVIVOR</h3><p>Eksplorasi game survival bertema gurun dengan sistem misi, inventaris, kebutuhan karakter, loot, dan antarmuka mobile.</p><div class="tags"><span class="tag">Game Design</span><span class="tag">Web</span><span class="tag">Mobile UI</span></div></article>
+        <article class="project"><div class="project-top"><span>GAME PROTOTYPE</span><span>03</span></div><h3>MARTABAK HORROR</h3><p>Konsep game horor bertema kios martabak dengan interaksi pelanggan, sistem pesanan, suasana misterius, dan elemen kejutan.</p><div class="tags"><span class="tag">Game Concept</span><span class="tag">Interaction</span></div></article>
+        <article class="project"><div class="project-top"><span>APP / GAME</span><span>04</span></div><h3>NEON ARCADE</h3><p>Eksplorasi kumpulan mini-game dengan tampilan arcade dan pengembangan fitur bermain bersama secara online.</p><div class="tags"><span class="tag">JavaScript</span><span class="tag">Mini Games</span><span class="tag">UI</span></div></article>
+      </div>
+    </div></section>
+
+    <section id="experience"><div class="wrap reveal">
+      <div class="section-head"><div><div class="kicker">04 / MY JOURNEY</div><h2>Pengalaman</h2></div><p>Perjalanan belajar dan proses membangun kemampuan di dunia teknologi.</p></div>
+      <div class="timeline">
+        <div class="time-row"><time>SAAT INI</time><div><h3>Belajar Web Development</h3><p>Membangun pemahaman dari dasar tentang HTML, CSS, JavaScript, dan cara kerja website.</p></div></div>
+        <div class="time-row"><time>PROYEK PRIBADI</time><div><h3>Merancang & Mengembangkan Ide Game</h3><p>Menyusun konsep game, fitur, alur gameplay, sistem antarmuka, dan mencoba mewujudkannya menjadi prototipe.</p></div></div>
+        <div class="time-row"><time>BERKELANJUTAN</time><div><h3>Eksplorasi Teknologi Digital</h3><p>Mempelajari tools digital dan AI untuk membantu proses belajar, desain, serta pengembangan proyek.</p></div></div>
+      </div>
+    </div></section>
+
+    <section id="contact"><div class="wrap reveal"><div class="cta"><div><div class="kicker">05 / GET IN TOUCH</div><h2>Punya ide menarik?</h2><p>Saya terbuka untuk bertukar ide, belajar, dan membuat sesuatu yang kreatif.</p></div><a class="btn primary" href="mailto:hello@example.com">Kontak Saya ↗</a></div></div></section>
+  </main>
+  <footer class="wrap"><strong>M. Sukron Al-Habsy</strong><span>© <span id="year"></span> — Built with curiosity.</span></footer>
+
+  <button class="chat-launch" id="chatLaunch">✦ Tanya AI</button>
+  <aside class="chat" id="chatBox" aria-label="AI Assistant">
+    <div class="chat-head"><div><strong>✦ Sukron AI Assistant</strong><small>Asisten portofolio pribadi</small></div><button id="chatClose" aria-label="Tutup">×</button></div>
+    <div class="messages" id="messages"><div class="msg bot">Halo! Saya AI Assistant di portofolio M. Sukron Al-Habsy. Tanyakan tentang profil, minat, keahlian, atau proyek yang ditampilkan di sini.</div></div>
+    <form class="chat-form" id="chatForm"><input id="chatInput" maxlength="500" placeholder="Tulis pertanyaan..." autocomplete="off" required><button type="submit">Kirim</button></form>
+    <div class="chat-note">AI dapat membuat kesalahan. Informasi profil mengikuti isi portofolio.</div>
+  </aside>
+
+  <script>
+    document.getElementById('year').textContent=new Date().getFullYear();
+    const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+    const box=document.getElementById('chatBox'),msgs=document.getElementById('messages');
+    document.getElementById('chatLaunch').onclick=()=>box.classList.add('open');
+    document.getElementById('chatClose').onclick=()=>box.classList.remove('open');
+    function addMsg(text,who){const el=document.createElement('div');el.className='msg '+who;el.textContent=text;msgs.appendChild(el);msgs.scrollTop=msgs.scrollHeight}
+    document.getElementById('chatForm').addEventListener('submit',async e=>{
+      e.preventDefault();const input=document.getElementById('chatInput');const q=input.value.trim();if(!q)return;
+      addMsg(q,'user');input.value='';const pending=document.createElement('div');pending.className='msg bot';pending.textContent='Sedang berpikir…';msgs.appendChild(pending);msgs.scrollTop=msgs.scrollHeight;
+      try{const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:q})});const data=await res.json();pending.textContent=data.reply||data.error||'Maaf, jawaban belum tersedia.'}
+      catch(err){pending.textContent='AI belum tersambung. Pastikan API sudah dipasang dan OPENAI_API_KEY sudah diatur di Vercel.'}
+      msgs.scrollTop=msgs.scrollHeight;
+    });
+  </script>
+</body>
+</html>
