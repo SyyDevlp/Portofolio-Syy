@@ -115,9 +115,9 @@
 
   <button class="chat-launch" id="chatLaunch">✦ Tanya AI</button>
   <aside class="chat" id="chatBox" aria-label="AI Assistant">
-    <div class="chat-head"><div><strong>✦ Sukron AI Assistant</strong><small>Asisten portofolio pribadi</small></div><button id="chatClose" aria-label="Tutup">×</button></div>
-    <div class="messages" id="messages"><div class="msg bot">Halo! Saya AI Assistant di portofolio M. Sukron Al-Habsy. Tanyakan tentang profil, minat, keahlian, atau proyek yang ditampilkan di sini.</div></div>
-    <form class="chat-form" id="chatForm"><input id="chatInput" maxlength="500" placeholder="Tulis pertanyaan..." autocomplete="off" required><button type="submit">Kirim</button></form>
+    <div class="chat-head"><div><strong>✦ Sukron AI Assistant</strong><small>Teman ngobrol serbaguna</small></div><button id="chatClose" aria-label="Tutup">×</button></div>
+    <div class="messages" id="messages"><div class="msg bot">Halo! Saya Sukron AI Assistant. Kita bisa ngobrol tentang portofolio, teknologi, atau topik apa pun. Mau bahas apa hari ini?</div></div>
+    <form class="chat-form" id="chatForm"><input id="chatInput" maxlength="2000" placeholder="Ngobrol apa saja..." autocomplete="off" required><button type="submit">Kirim</button></form>
     <div class="chat-note">AI dapat membuat kesalahan. Informasi profil mengikuti isi portofolio.</div>
   </aside>
 
@@ -126,15 +126,56 @@
     const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
     document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
     const box=document.getElementById('chatBox'),msgs=document.getElementById('messages');
+    const chatHistory=[{
+      role:'model',
+      text:'Halo! Saya Sukron AI Assistant. Kita bisa ngobrol tentang portofolio, teknologi, atau topik apa pun. Mau bahas apa hari ini?'
+    }];
     document.getElementById('chatLaunch').onclick=()=>box.classList.add('open');
     document.getElementById('chatClose').onclick=()=>box.classList.remove('open');
-    function addMsg(text,who){const el=document.createElement('div');el.className='msg '+who;el.textContent=text;msgs.appendChild(el);msgs.scrollTop=msgs.scrollHeight}
-    document.getElementById('chatForm').addEventListener('submit',async e=>{
-      e.preventDefault();const input=document.getElementById('chatInput');const q=input.value.trim();if(!q)return;
-      addMsg(q,'user');input.value='';const pending=document.createElement('div');pending.className='msg bot';pending.textContent='Sedang berpikir…';msgs.appendChild(pending);msgs.scrollTop=msgs.scrollHeight;
-      try{const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:q})});const data=await res.json();pending.textContent=data.reply||data.error||'Maaf, jawaban belum tersedia.'}
-      catch(err){pending.textContent='AI belum tersambung. Pastikan API sudah dipasang dan OPENAI_API_KEY sudah diatur di Vercel.'}
+    function addMsg(text,who){
+      const el=document.createElement('div');
+      el.className='msg '+who;
+      el.textContent=text;
+      msgs.appendChild(el);
       msgs.scrollTop=msgs.scrollHeight;
+      return el;
+    }
+    document.getElementById('chatForm').addEventListener('submit',async e=>{
+      e.preventDefault();
+      const input=document.getElementById('chatInput');
+      const sendButton=e.currentTarget.querySelector('button[type="submit"]');
+      const q=input.value.trim();
+      if(!q || sendButton.disabled)return;
+
+      addMsg(q,'user');
+      input.value='';
+      const pending=addMsg('Sedang mengetik…','bot');
+      const previousHistory=chatHistory.slice(-20);
+      chatHistory.push({role:'user',text:q});
+      sendButton.disabled=true;
+      input.disabled=true;
+
+      try{
+        const res=await fetch('/api/chat',{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({message:q,history:previousHistory})
+        });
+        const data=await res.json();
+        if(!res.ok)throw new Error(data.error||'Layanan AI sedang bermasalah.');
+        const answer=data.reply||'Maaf, saya belum mendapat jawaban.';
+        pending.textContent=answer;
+        chatHistory.push({role:'model',text:answer});
+      }catch(err){
+        pending.textContent=err.message||'AI belum tersambung. Periksa konfigurasi API di Vercel.';
+        // Pesan yang gagal tidak dimasukkan ke riwayat model agar percakapan tetap sinkron.
+        chatHistory.pop();
+      }finally{
+        sendButton.disabled=false;
+        input.disabled=false;
+        input.focus();
+        msgs.scrollTop=msgs.scrollHeight;
+      }
     });
   </script>
 </body>
